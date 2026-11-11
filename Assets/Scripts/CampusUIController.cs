@@ -343,6 +343,37 @@ public class CampusUIController : MonoBehaviour
         return options[index];
     }
 
+    /// <summary>Origen elegido actualmente en el dropdown.</summary>
+    public Node SelectedOrigin
+    {
+        get { return GetSelectedNode(originOptions, originDropdown); }
+    }
+
+    /// <summary>
+    /// Fija el origen por codigo (por ejemplo, tras leer el letrero de una puerta).
+    /// Si el nodo no esta en la lista filtrada, reconstruye la lista completa.
+    /// </summary>
+    public bool SelectOrigin(Node node)
+    {
+        if (node == null || originDropdown == null) return false;
+
+        int index = originOptions != null ? originOptions.IndexOf(node) : -1;
+        if (index < 0 && listNodes != null)
+        {
+            RebuildOriginOptions(listNodes);
+            index = originOptions.IndexOf(node);
+        }
+
+        if (index < 0) return false;
+
+        suppressCallbacks = true;
+        originDropdown.value = index;
+        originDropdown.RefreshShownValue();
+        suppressCallbacks = false;
+        lastOriginValue = index;
+        return true;
+    }
+
     private void OnOriginDropdownChanged(int index)
     {
         if (suppressCallbacks) return;

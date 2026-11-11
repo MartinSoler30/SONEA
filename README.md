@@ -95,6 +95,9 @@ Assets/
     ARPathVisualizer.cs           Línea de ruta
     ARCampusPlacement.cs          Anclaje AR y retícula
     CampusUIController.cs         Buscador, listas y paneles
+    DoorSignReader.cs             Captura frames ARCore y llama al OCR nativo
+    DoorSignPanelController.cs    Flujo "Leer letrero" y selección de candidatos
+    RoomSignMatcher.cs            Coincidencia difusa entre OCR y nodos del grafo
     NavigationDebugHUD.cs         Diagnóstico de campo
     Editor/
       CampusGraphAutoBuilder.cs   Genera grafo, escena, UI y APK
@@ -107,6 +110,8 @@ docs/
   pruebas.md                      Plan de pruebas incrementales
   qr.md                           Etiquetas QR y cómo regenerarlas
   qr/                             90 PNG + manifiesto.csv + hojas HTML
+Tools/
+  OcrPlugin/                      Plugin Android (ML Kit) que compila sonea-ocr.aar
 ```
 
 ## Documentación
@@ -129,10 +134,22 @@ CampusGraphAutoBuilder.RegenerateAndVerify
 
 Resultado esperado: 175 nodos, 175 alcanzables y rutas de referencia con distancias estables (por ejemplo EN101 → BIBLIOTECA = 45,2 m; EN101 → M219 = 247,7 m).
 
+## Leer el letrero de la puerta
+
+En el panel 2D, después de elegir el destino:
+
+1. Pulsa **Leer letrero de la puerta**.
+2. Apunta al letrero a 1–3 m, con el texto dentro del marco.
+3. Pulsa **Capturar**. La app prueba varias rotaciones del frame y busca coincidencias en el grafo.
+4. Elige el origen correcto entre los candidatos. La app vuelve al panel con el origen ya seleccionado.
+5. Revisa la lista y pulsa **Iniciar Ruta AR**.
+
+El OCR de ML Kit corre en el teléfono: la imagen no se envía a internet. Si el letrero está borroso, inclinado o con reflejos, usa el QR o elige el origen en la lista.
+
 ## Limitaciones conocidas
 
 - El orden exacto de algunos salones y puertas interiores se distribuyó sobre la longitud medida; no sustituye un levantamiento puerta por puerta.
-- La app no usa VLM continuo ni Depth/Scene Semantics: el grafo es la fuente de verdad y la IA solo asiste en la redacción de instrucciones.
+- La app no usa VLM continuo ni Depth/Scene Semantics: el grafo es la fuente de verdad. El OCR solo propone un nodo y el usuario confirma el origen.
 - El APK no se versiona en git; se publica como *Release*.
 - La precisión del anclaje depende del tracking de ARCore y de la luz del entorno.
 
@@ -140,6 +157,7 @@ Resultado esperado: 175 nodos, 175 alcanzables y rutas de referencia con distanc
 
 - **2026-11-10 — Geometría real:** se reemplazó el grafo estimado por el medido sobre el KML; 175 nodos, 62 espacios, 4 entradas reales y 14 puntos exteriores. Se documentó la arquitectura, el grafo, las coordenadas y el plan de pruebas, y se generaron 90 QR.
 - **2026-11-10 — Flecha y banner:** decal plano estilo Apple Maps con texturas SDF, banner superior con instrucción e icono de maniobra. Se corrigió la orientación vertical de la flecha y el color de la línea de ruta, y se compiló el APK de prueba.
+- **2026-11-11 — Lectura de puertas:** OCR on-device con ML Kit, captura de frames de ARCore, matcher difuso contra ids/alias del grafo y selección del origen por letrero. Incluye el plugin `Tools/OcrPlugin` y los scripts `DoorSignReader`, `DoorSignPanelController` y `RoomSignMatcher`.
 
 ## Créditos
 

@@ -25,6 +25,8 @@ public class CampusRoom
     public string side = "north";
     public string type = "salon";
     public bool showInList = true;
+    [Tooltip("Textos alternativos que puede mostrar el letrero de la puerta.")]
+    public List<string> aliases = new List<string>();
 }
 
 [Serializable]

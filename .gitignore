@@ -37,6 +37,12 @@
 # Crashlytics
 crashlytics-build.properties
 
+# Android OCR plugin
+Tools/OcrPlugin/.gradle/
+Tools/OcrPlugin/local.properties
+Tools/OcrPlugin/**/build/
+regenerate_ocr.log
+
 # IDE / editor
 .vs/
 .idea/

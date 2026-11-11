@@ -46,6 +46,9 @@ Main.unity
 | `ARCampusPlacement.cs` | Ancla el mapa al piso detectado, lo orienta con la brújula (offset 0°) y coloca el origen a los pies del usuario. |
 | `NavigationDebugHUD.cs` | FPS, tracking, piso activo, nodo más cercano, distancia restante y desvío. |
 | `CampusUIController.cs` | Llena las listas por edificio/piso, filtra por texto, acepta `SONEA:<id>` y alterna entre panel 2D y HUD AR. |
+| `DoorSignReader.cs` | Captura un frame RGBA de `ARCameraManager`, lo envía al plugin ML Kit y devuelve el texto en JSON. |
+| `DoorSignPanelController.cs` | Gestiona el modo "Leer letrero", prueba rotaciones, muestra candidatos y fija el origen. |
+| `RoomSignMatcher.cs` | Normaliza el OCR, genera alias y puntúa coincidencias por id, nombre, número y distancia de edición. |
 
 ### Editor
 
@@ -54,6 +57,19 @@ Main.unity
 | `CampusGraphAutoBuilder.cs` | Genera el grafo, los pisos, la UI, el rig AR, configura el player de Android, compila el APK y verifica la escena. |
 | `NavigationTextureGenerator.cs` | Genera por SDF las texturas de la flecha (azul, ámbar, verde) y los iconos de maniobra. |
 | `QRCodeGenerator.cs` | Genera 90 QR, el manifiesto CSV y las hojas HTML imprimibles. |
+
+### Lectura de letreros (OCR)
+
+```
+Botón "Leer letrero"
+  → DoorSignPanelController oculta el panel 2D
+  → DoorSignReader.CaptureFrame() toma un frame de ARCore y lo reduce a 960 px
+  → Plugin Android (ML Kit Text Recognition v2) lee el texto en el dispositivo
+  → RoomSignMatcher compara con id, nombre, alias y número de cada nodo
+  → El usuario elige el candidato; CampusUIController.SelectOrigin() fija el origen
+```
+
+El plugin vive en `Tools/OcrPlugin` y se compila como `Assets/Plugins/Android/sonea-ocr.aar`. La dependencia `com.google.mlkit:text-recognition` se declara en `Assets/Plugins/Android/mainTemplate.gradle`, por lo que no hace falta pegar AARs de ML Kit. No se envía ninguna imagen a un servidor.
 
 ## Flecha decal
 

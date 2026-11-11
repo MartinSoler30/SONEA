@@ -42,6 +42,9 @@ public class Node : MonoBehaviour
     [Tooltip("Payload del QR asociado. Por defecto SONEA:<nodeId>.")]
     public string qrId;
 
+    [Tooltip("Nombres alternativos que puede mostrar el letrero de la puerta (ej. 105, Salon 105).")]
+    public List<string> aliases = new List<string>();
+
     [Header("Conexiones")]
     public List<Edge> edges = new List<Edge>();
 

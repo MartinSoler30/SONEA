@@ -30,6 +30,19 @@ adb install -r Builds\SONEA.apk
 
 **Evidencia:** captura del panel 2D, captura del HUD con la flecha azul, captura de la llegada en verde.
 
+### Lectura del letrero de la puerta
+
+| # | Prueba | Criterio de aceptación |
+|---|---|---|
+| 1.7 | Letrero `EN105` a 2 m, de frente | Aparece EN105 como primer candidato con confianza alta. |
+| 1.8 | Letrero `EN105` con ligera inclinación | La app prueba rotaciones y sigue detectando EN105. |
+| 1.9 | Letrero `SALÓN 105` | El alias lo asocia a EN105 aunque no incluya el prefijo. |
+| 1.10 | Letrero de Modulares (`M103`) con origen en Modulares | No lo confunde con un salón del Nuevo. |
+| 1.11 | Letrero borroso o con reflejo | No inventa un origen: muestra el texto leído y pide reintentar. |
+| 1.12 | Confirmar el candidato | El dropdown de origen queda en el salón y se puede iniciar la ruta. |
+
+**Evidencia:** captura del panel de lectura con el letrero, captura de la lista de candidatos y captura del origen ya seleccionado.
+
 ## Fase 2 — Un edificio completo
 
 **Objetivo:** validar cambios de piso, escaleras, ascensor y rutas largas.

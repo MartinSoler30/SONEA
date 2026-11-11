@@ -246,7 +246,8 @@ public static class CampusGraphAutoBuilder
                             0.42f);
 
                         ApplyMetadata(roomNode, room.id, building, floor.index, floorY,
-                            string.IsNullOrEmpty(room.type) ? "salon" : room.type, room.showInList);
+                            string.IsNullOrEmpty(room.type) ? "salon" : room.type, room.showInList,
+                            room.aliases);
                         RegisterNode(byId, allNodes, roomNode);
                         ConnectBidirectional(roomNode, NearestByX(corridor, room.x, buildingRoot.transform));
                     }
@@ -353,7 +354,8 @@ public static class CampusGraphAutoBuilder
     }
 
     private static void ApplyMetadata(Node node, string nodeId, CampusBuilding building,
-        int floor, float floorY, string nodeType, bool showInList)
+        int floor, float floorY, string nodeType, bool showInList,
+        List<string> aliases = null)
     {
         node.nodeId = nodeId;
         node.buildingId = building.id;
@@ -365,6 +367,7 @@ public static class CampusGraphAutoBuilder
         node.nodeType = nodeType;
         node.showInList = showInList;
         node.qrId = "SONEA:" + nodeId;
+        node.aliases = aliases != null ? new List<string>(aliases) : new List<string>();
     }
 
     private static void RegisterNode(Dictionary<string, Node> byId, List<Node> allNodes, Node node)
@@ -701,7 +704,8 @@ public static class CampusGraphAutoBuilder
         const float DropdownHeight = 140f;
         const float ButtonHeight = 128f;
         const float ValidateHeight = 96f;
-        const float MapMaxHeight = 720f;
+        const float SignButtonHeight = 96f;
+        const float MapMaxHeight = 640f;
 
         Texture2D mapTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(CampusMapPath);
 
@@ -720,6 +724,7 @@ public static class CampusGraphAutoBuilder
         if (mapTexture != null) totalHeight += mapHeight + 24f;
         totalHeight += SearchHeight + 22f;
         totalHeight += (LabelHeight + 6f) + DropdownHeight + 22f;
+        totalHeight += SignButtonHeight + 16f;
         totalHeight += (LabelHeight + 6f) + DropdownHeight + 26f;
         totalHeight += ButtonHeight;
         totalHeight += 16f + ValidateHeight;
@@ -788,6 +793,21 @@ public static class CampusGraphAutoBuilder
         EnlargeDropdown(originDropdown, DropdownHeight, 38f);
         PlaceTop(originGO.GetComponent<RectTransform>(), cursor, DropdownHeight);
         cursor += DropdownHeight + 22f;
+
+        // Lectura del letrero de la puerta para fijar el origen.
+        GameObject readSignGO = TMP_DefaultControls.CreateButton(resources);
+        readSignGO.name = "BtnReadDoorSign";
+        readSignGO.transform.SetParent(contentGO.transform, false);
+        Button readSignButton = readSignGO.GetComponent<Button>();
+        TMP_Text readSignLabel = readSignGO.GetComponentInChildren<TMP_Text>();
+        if (readSignLabel != null)
+        {
+            readSignLabel.text = "Leer letrero de la puerta";
+            readSignLabel.fontSize = 34f;
+        }
+        StyleControl(readSignGO, new Color(0.12f, 0.42f, 0.46f, 1f));
+        PlaceTop(readSignGO.GetComponent<RectTransform>(), cursor, SignButtonHeight);
+        cursor += SignButtonHeight + 16f;
 
         // Destino.
         TMP_Text destLabel = CreateLabel("DestinationLabel", contentGO.transform, "Destino", 32f, TextAlignmentOptions.Left);
@@ -962,6 +982,65 @@ public static class CampusGraphAutoBuilder
 
         hud.SetActive(false);
 
+        // ---------------- Panel de lectura de letreros ----------------
+        GameObject signPanel = new GameObject("PanelSignScan", typeof(RectTransform));
+        signPanel.transform.SetParent(canvasGO.transform, false);
+        Image signBackground = signPanel.AddComponent<Image>();
+        signBackground.color = new Color(0f, 0f, 0f, 0.01f);
+        signBackground.raycastTarget = false;
+        Stretch(signPanel.GetComponent<RectTransform>());
+
+        GameObject scanCard = new GameObject("ScanCard", typeof(RectTransform));
+        scanCard.transform.SetParent(signPanel.transform, false);
+        Image scanCardImage = scanCard.AddComponent<Image>();
+        scanCardImage.sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+        scanCardImage.type = Image.Type.Sliced;
+        scanCardImage.pixelsPerUnitMultiplier = 2.5f;
+        scanCardImage.color = new Color(0.04f, 0.06f, 0.08f, 0.92f);
+        scanCardImage.raycastTarget = false;
+
+        RectTransform scanCardRT = scanCard.GetComponent<RectTransform>();
+        scanCardRT.anchorMin = new Vector2(0f, 1f);
+        scanCardRT.anchorMax = new Vector2(1f, 1f);
+        scanCardRT.pivot = new Vector2(0.5f, 1f);
+        scanCardRT.sizeDelta = new Vector2(-64f, 250f);
+        scanCardRT.anchoredPosition = new Vector2(0f, -32f);
+
+        TMP_Text scanTitle = CreateLabel("ScanTitulo", scanCard.transform,
+            "Leer letrero de la puerta", 36f, TextAlignmentOptions.Center);
+        scanTitle.color = new Color(0.25f, 0.85f, 1f);
+        PlaceTop(scanTitle.rectTransform, 14f, 44f, 24f);
+
+        TMP_Text scanStatus = CreateLabel("ScanEstado", scanCard.transform,
+            "Apunta al letrero de la puerta", 32f, TextAlignmentOptions.Center);
+        scanStatus.fontStyle = FontStyles.Bold;
+        PlaceTop(scanStatus.rectTransform, 64f, 64f, 24f);
+
+        TMP_Text scanDetail = CreateLabel("ScanDetalle", scanCard.transform,
+            "Acercate a 1-3 m y procura que el texto quede centrado.", 26f,
+            TextAlignmentOptions.Center);
+        scanDetail.color = new Color(0.72f, 0.82f, 0.92f);
+        PlaceTop(scanDetail.rectTransform, 136f, 96f, 24f);
+
+        CreateScanFrame(signPanel.transform);
+
+        Button candidate1 = CreateCenterButton(resources, signPanel.transform, "BtnSignCandidate1",
+            string.Empty, 0f, -300f, 780f, 84f, new Color(0.12f, 0.28f, 0.34f, 0.95f), 30f);
+        Button candidate2 = CreateCenterButton(resources, signPanel.transform, "BtnSignCandidate2",
+            string.Empty, 0f, -395f, 780f, 84f, new Color(0.12f, 0.28f, 0.34f, 0.95f), 30f);
+        Button candidate3 = CreateCenterButton(resources, signPanel.transform, "BtnSignCandidate3",
+            string.Empty, 0f, -490f, 780f, 84f, new Color(0.12f, 0.28f, 0.34f, 0.95f), 30f);
+        candidate1.gameObject.SetActive(false);
+        candidate2.gameObject.SetActive(false);
+        candidate3.gameObject.SetActive(false);
+
+        Button captureSign = CreateCenterButton(resources, signPanel.transform, "BtnCaptureSign",
+            "Capturar", 0f, -620f, 600f, 110f, new Color(0.15f, 0.55f, 0.85f, 1f), 38f);
+        Button cancelSign = CreateCenterButton(resources, signPanel.transform, "BtnCancelSign",
+            "Cancelar", 0f, -745f, 420f, 90f, new Color(0.34f, 0.18f, 0.18f, 1f), 32f);
+
+        signPanel.SetActive(false);
+
         // ---------------- Controlador de UI ----------------
         CampusUIController uiController = canvasGO.AddComponent<CampusUIController>();
         uiController.panel2DMap = panel2D;
@@ -977,7 +1056,26 @@ public static class CampusGraphAutoBuilder
         uiController.statusLabel = hudStatus;
         uiController.status2DLabel = status2D;
 
+        // Lector de letreros: captura frames de ARCore y consulta el plugin OCR.
+        DoorSignReader signReader = canvasGO.AddComponent<DoorSignReader>();
+
+        DoorSignPanelController signController = canvasGO.AddComponent<DoorSignPanelController>();
+        signController.panel2DMap = panel2D;
+        signController.panelARHUD = hud;
+        signController.panelSignScan = signPanel;
+        signController.reader = signReader;
+        signController.uiController = uiController;
+        signController.graphManager = graph;
+        signController.scanStatus = scanStatus;
+        signController.scanDetail = scanDetail;
+        signController.captureButton = captureSign;
+        signController.cancelButton = cancelSign;
+        signController.candidateButtons = new Button[] { candidate1, candidate2, candidate3 };
+
         // Listeners persistentes (quedan guardados en la escena).
+        UnityEventTools.AddPersistentListener(readSignButton.onClick, new UnityAction(signController.Open));
+        UnityEventTools.AddPersistentListener(captureSign.onClick, new UnityAction(signController.Capture));
+        UnityEventTools.AddPersistentListener(cancelSign.onClick, new UnityAction(signController.Cancel));
         UnityEventTools.AddPersistentListener(startButton.onClick, new UnityAction(uiController.OnClickStartNavigation));
         UnityEventTools.AddPersistentListener(stopButton.onClick, new UnityAction(uiController.OnClickStopNavigation));
         UnityEventTools.AddPersistentListener(searchInput.onValueChanged, new UnityAction<string>(uiController.OnSearchValueChanged));
@@ -987,6 +1085,8 @@ public static class CampusGraphAutoBuilder
         UnityEventTools.AddPersistentListener(rotateRight.onClick, new UnityAction(uiController.OnClickRotateRight));
 
         EditorUtility.SetDirty(uiController);
+        EditorUtility.SetDirty(signController);
+        EditorUtility.SetDirty(signPanel);
         EditorUtility.SetDirty(canvasGO);
     }
 
@@ -1248,6 +1348,62 @@ public static class CampusGraphAutoBuilder
         rect.anchoredPosition = new Vector2(x, 60f);
 
         return button;
+    }
+
+    /// <summary>Boton centrado en pantalla, usado por el panel de lectura de letreros.</summary>
+    private static Button CreateCenterButton(TMP_DefaultControls.Resources resources, Transform parent,
+        string name, string text, float x, float y, float width, float height, Color color, float fontSize)
+    {
+        GameObject buttonGO = TMP_DefaultControls.CreateButton(resources);
+        buttonGO.name = name;
+        buttonGO.transform.SetParent(parent, false);
+
+        Button button = buttonGO.GetComponent<Button>();
+        TMP_Text label = buttonGO.GetComponentInChildren<TMP_Text>();
+        if (label != null)
+        {
+            label.text = text;
+            label.fontSize = fontSize;
+        }
+
+        StyleControl(buttonGO, color);
+
+        RectTransform rect = buttonGO.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(width, height);
+        rect.anchoredPosition = new Vector2(x, y);
+
+        return button;
+    }
+
+    /// <summary>Marco de cuatro lineas para encuadrar el letrero.</summary>
+    private static void CreateScanFrame(Transform parent)
+    {
+        Color color = new Color(0.25f, 0.85f, 1f, 0.80f);
+        CreateScanLine(parent, "MarcoSuperior", new Vector2(720f, 6f), new Vector2(0f, 210f), color);
+        CreateScanLine(parent, "MarcoInferior", new Vector2(720f, 6f), new Vector2(0f, -210f), color);
+        CreateScanLine(parent, "MarcoIzquierdo", new Vector2(6f, 426f), new Vector2(-360f, 0f), color);
+        CreateScanLine(parent, "MarcoDerecho", new Vector2(6f, 426f), new Vector2(360f, 0f), color);
+    }
+
+    private static void CreateScanLine(Transform parent, string name, Vector2 size,
+        Vector2 position, Color color)
+    {
+        GameObject line = new GameObject(name, typeof(RectTransform));
+        line.transform.SetParent(parent, false);
+
+        Image image = line.AddComponent<Image>();
+        image.color = color;
+        image.raycastTarget = false;
+
+        RectTransform rect = line.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = size;
+        rect.anchoredPosition = position;
     }
 
     private static void Stretch(RectTransform rectTransform)
