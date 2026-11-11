@@ -1,0 +1,880 @@
+{
+    "schemaVersion": 2,
+    "campusName": "ETITC",
+    "buildings": [
+        {
+            "id": "nuevo",
+            "name": "Edificio Nuevo",
+            "shortName": "Nuevo",
+            "floorHeight": 3.5,
+            "origin": {
+                "x": -44.5,
+                "z": -11.3
+            },
+            "rotationDegrees": 1.8,
+            "length": 44.1,
+            "width": 24.8,
+            "corridorZ": 12.7,
+            "corridorStartX": 4,
+            "corridorEndX": 42,
+            "doorOffset": 2.5,
+            "floors": [
+                {
+                    "index": 1,
+                    "name": "Piso 1",
+                    "stairX": 4.2,
+                    "stairZ": 9.8,
+                    "hasElevator": true,
+                    "elevatorX": 6.6,
+                    "elevatorZ": 15.9,
+                    "rooms": [
+                        {
+                            "id": "EN101",
+                            "name": "EN101",
+                            "x": 7,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN102",
+                            "name": "EN102",
+                            "x": 12,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN103",
+                            "name": "EN103",
+                            "x": 17,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN104",
+                            "name": "EN104",
+                            "x": 22,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN105",
+                            "name": "EN105",
+                            "x": 27,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "OFICINA_ETITC",
+                            "name": "Oficina ETITC",
+                            "x": 33,
+                            "side": "north",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P1_BANO_M",
+                            "name": "Baños Mujer",
+                            "x": 9,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P1_BANO_H",
+                            "name": "Baños Hombre",
+                            "x": 15,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P1_SALIDA_1",
+                            "name": "Salida de emergencia 1",
+                            "x": 24,
+                            "side": "south",
+                            "type": "salida",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P1_SALIDA_2",
+                            "name": "Salida de emergencia 2",
+                            "x": 35,
+                            "side": "south",
+                            "type": "salida",
+                            "showInList": true
+                        }
+                    ],
+                    "entrances": [
+                        {
+                            "id": "nuevo_P1_entrada_principal",
+                            "name": "Entrada principal Nuevo",
+                            "x": 44,
+                            "z": 12.7,
+                            "side": "east",
+                            "type": "entrada",
+                            "showInList": true
+                        },
+                        {
+                            "id": "nuevo_P1_entrada_secundaria",
+                            "name": "Entrada secundaria Nuevo",
+                            "x": 11.9,
+                            "z": 22.4,
+                            "side": "north",
+                            "type": "entrada",
+                            "showInList": true
+                        }
+                    ]
+                },
+                {
+                    "index": 2,
+                    "name": "Piso 2",
+                    "stairX": 4.2,
+                    "stairZ": 9.8,
+                    "hasElevator": true,
+                    "elevatorX": 6.6,
+                    "elevatorZ": 15.9,
+                    "rooms": [
+                        {
+                            "id": "EN201",
+                            "name": "EN201",
+                            "x": 7,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN202",
+                            "name": "EN202",
+                            "x": 12,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN203",
+                            "name": "EN203",
+                            "x": 17,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN204",
+                            "name": "EN204",
+                            "x": 22,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN205",
+                            "name": "EN205",
+                            "x": 27,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN206",
+                            "name": "EN206",
+                            "x": 33,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P2_BANO_M",
+                            "name": "Baños Mujer",
+                            "x": 9,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P2_BANO_H",
+                            "name": "Baños Hombre",
+                            "x": 15,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P2_SALIDA_1",
+                            "name": "Salida de emergencia 1",
+                            "x": 24,
+                            "side": "south",
+                            "type": "salida",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P2_SALIDA_2",
+                            "name": "Salida de emergencia 2",
+                            "x": 35,
+                            "side": "south",
+                            "type": "salida",
+                            "showInList": true
+                        }
+                    ],
+                    "entrances": []
+                },
+                {
+                    "index": 3,
+                    "name": "Piso 3",
+                    "stairX": 4.2,
+                    "stairZ": 9.8,
+                    "hasElevator": true,
+                    "elevatorX": 6.6,
+                    "elevatorZ": 15.9,
+                    "rooms": [
+                        {
+                            "id": "EN301",
+                            "name": "EN301",
+                            "x": 9,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN302",
+                            "name": "EN302",
+                            "x": 18,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "EN303",
+                            "name": "EN303",
+                            "x": 27,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "BIBLIOTECA",
+                            "name": "Biblioteca",
+                            "x": 36,
+                            "side": "north",
+                            "type": "biblioteca",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P3_BANO_M",
+                            "name": "Baños Mujer",
+                            "x": 10,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P3_BANO_H",
+                            "name": "Baños Hombre",
+                            "x": 24,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        }
+                    ],
+                    "entrances": []
+                },
+                {
+                    "index": 4,
+                    "name": "Piso 4",
+                    "stairX": 4.2,
+                    "stairZ": 9.8,
+                    "hasElevator": true,
+                    "elevatorX": 6.6,
+                    "elevatorZ": 15.9,
+                    "rooms": [
+                        {
+                            "id": "OFICINA_UNICOLMAYOR",
+                            "name": "Oficina Unicolmayor",
+                            "x": 9,
+                            "side": "north",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "SALA_JUNTAS",
+                            "name": "Sala de Juntas",
+                            "x": 20,
+                            "side": "north",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "SALAS_ESTUDIO",
+                            "name": "Salas de Estudio",
+                            "x": 31,
+                            "side": "north",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P4_BANO_M",
+                            "name": "Baños Mujer",
+                            "x": 12,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "NUEVO_P4_BANO_H",
+                            "name": "Baños Hombre",
+                            "x": 26,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        }
+                    ],
+                    "entrances": []
+                }
+            ]
+        },
+        {
+            "id": "modulares",
+            "name": "Edificio Modulares",
+            "shortName": "Modulares",
+            "floorHeight": 3,
+            "origin": {
+                "x": -106.2,
+                "z": 77
+            },
+            "rotationDegrees": -30.8,
+            "length": 94.3,
+            "width": 16,
+            "corridorZ": 8,
+            "corridorStartX": 2,
+            "corridorEndX": 92.3,
+            "doorOffset": 2.2,
+            "floors": [
+                {
+                    "index": 1,
+                    "name": "Piso 1",
+                    "stairX": 3.2,
+                    "stairZ": 4.2,
+                    "hasElevator": false,
+                    "elevatorX": 0,
+                    "elevatorZ": 0,
+                    "rooms": [
+                        {
+                            "id": "M103",
+                            "name": "M103",
+                            "x": 8,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M104",
+                            "name": "M104",
+                            "x": 20,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M105",
+                            "name": "M105",
+                            "x": 32,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M121",
+                            "name": "M121",
+                            "x": 44,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M106",
+                            "name": "M106",
+                            "x": 56,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M107",
+                            "name": "M107",
+                            "x": 68,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M108",
+                            "name": "M108",
+                            "x": 80,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "OFICINA_PSICOLOGIA",
+                            "name": "Oficina de Psicología",
+                            "x": 12,
+                            "side": "south",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P1_OF1",
+                            "name": "Oficina Modulares 1",
+                            "x": 24,
+                            "side": "south",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P1_OF2",
+                            "name": "Oficina Modulares 2",
+                            "x": 36,
+                            "side": "south",
+                            "type": "oficina",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P1_BANO_M",
+                            "name": "Baños Mujer",
+                            "x": 48,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P1_BANO_H",
+                            "name": "Baños Hombre",
+                            "x": 62,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P1_HALL",
+                            "name": "Hall de Modulares",
+                            "x": 76,
+                            "side": "south",
+                            "type": "hall",
+                            "showInList": true
+                        }
+                    ],
+                    "entrances": [
+                        {
+                            "id": "modulares_P1_entrada_cafeteria",
+                            "name": "Entrada cafetería Modulares",
+                            "x": 45.5,
+                            "z": 1.2,
+                            "side": "south",
+                            "type": "entrada",
+                            "showInList": true
+                        },
+                        {
+                            "id": "modulares_P1_entrada_este",
+                            "name": "Entrada noreste Modulares",
+                            "x": 93.3,
+                            "z": 3.9,
+                            "side": "east",
+                            "type": "entrada",
+                            "showInList": true
+                        }
+                    ]
+                },
+                {
+                    "index": 2,
+                    "name": "Piso 2",
+                    "stairX": 3.2,
+                    "stairZ": 4.2,
+                    "hasElevator": false,
+                    "elevatorX": 0,
+                    "elevatorZ": 0,
+                    "rooms": [
+                        {
+                            "id": "M201",
+                            "name": "M201",
+                            "x": 6,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M202",
+                            "name": "M202",
+                            "x": 16,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M203",
+                            "name": "M203",
+                            "x": 26,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M204",
+                            "name": "M204",
+                            "x": 36,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M205",
+                            "name": "M205",
+                            "x": 46,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M206",
+                            "name": "M206",
+                            "x": 56,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M207",
+                            "name": "M207",
+                            "x": 66,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M208",
+                            "name": "M208",
+                            "x": 76,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M215",
+                            "name": "M215",
+                            "x": 86,
+                            "side": "north",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M211",
+                            "name": "M211",
+                            "x": 10,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M212",
+                            "name": "M212",
+                            "x": 20,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M213",
+                            "name": "M213",
+                            "x": 30,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M219",
+                            "name": "M219",
+                            "x": 40,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M216",
+                            "name": "M216",
+                            "x": 50,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M217",
+                            "name": "M217",
+                            "x": 60,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "M218",
+                            "name": "M218",
+                            "x": 70,
+                            "side": "south",
+                            "type": "salon",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P2_BANO_M",
+                            "name": "Baños Mujer",
+                            "x": 80,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        },
+                        {
+                            "id": "MOD_P2_BANO_H",
+                            "name": "Baños Hombre",
+                            "x": 88,
+                            "side": "south",
+                            "type": "bano",
+                            "showInList": true
+                        }
+                    ],
+                    "entrances": []
+                }
+            ]
+        }
+    ],
+    "exterior": {
+        "nodes": [
+            {
+                "id": "ext_nuevo_principal",
+                "name": "Entrada principal Edificio Nuevo",
+                "x": 0,
+                "z": 0,
+                "type": "entrada",
+                "showInList": true
+            },
+            {
+                "id": "ext_nuevo_secundaria",
+                "name": "Entrada secundaria Edificio Nuevo",
+                "x": -31.9,
+                "z": 10.7,
+                "type": "entrada",
+                "showInList": true
+            },
+            {
+                "id": "ext_motos",
+                "name": "Parqueadero de motos",
+                "x": -8.7,
+                "z": 29.4,
+                "type": "parqueadero",
+                "showInList": true
+            },
+            {
+                "id": "ext_carros",
+                "name": "Parqueadero de carros",
+                "x": -0.5,
+                "z": 49.3,
+                "type": "parqueadero",
+                "showInList": true
+            },
+            {
+                "id": "ext_bicicletas",
+                "name": "Parqueadero de bicicletas",
+                "x": -6.6,
+                "z": 81.5,
+                "type": "parqueadero",
+                "showInList": true
+            },
+            {
+                "id": "ext_entrada_parqueadero",
+                "name": "Entrada vehicular del parqueadero",
+                "x": 21.2,
+                "z": 41,
+                "type": "entrada",
+                "showInList": true
+            },
+            {
+                "id": "ext_cancha",
+                "name": "Cancha",
+                "x": -68.9,
+                "z": 74.6,
+                "type": "cancha",
+                "showInList": true
+            },
+            {
+                "id": "ext_cancha_2",
+                "name": "Cancha 2",
+                "x": -88.2,
+                "z": 68.9,
+                "type": "cancha",
+                "showInList": true
+            },
+            {
+                "id": "ext_voleibol",
+                "name": "Cancha de voleibol",
+                "x": -22.9,
+                "z": 55.2,
+                "type": "cancha",
+                "showInList": true
+            },
+            {
+                "id": "ext_entrada_modulares",
+                "name": "Entrada Modulares y cafetería",
+                "x": -57.5,
+                "z": 84.2,
+                "type": "entrada",
+                "showInList": true
+            },
+            {
+                "id": "ext_pasillo_modulares",
+                "name": "Pasillo de entrada Modulares",
+                "x": -57.3,
+                "z": 94.1,
+                "type": "exterior",
+                "showInList": false
+            },
+            {
+                "id": "ext_cafeteria",
+                "name": "Cafetería",
+                "x": -37,
+                "z": 100.5,
+                "type": "cafeteria",
+                "showInList": true
+            },
+            {
+                "id": "ext_modulares_secundaria",
+                "name": "Entrada secundaria de Modulares",
+                "x": -28,
+                "z": 128.1,
+                "type": "entrada",
+                "showInList": true
+            },
+            {
+                "id": "ext_camino_central",
+                "name": "Camino central",
+                "x": -24,
+                "z": 70,
+                "type": "exterior",
+                "showInList": false
+            }
+        ],
+        "edges": [
+            {
+                "from": "ext_nuevo_principal",
+                "to": "ext_carros",
+                "type": "camino"
+            },
+            {
+                "from": "ext_nuevo_principal",
+                "to": "ext_motos",
+                "type": "camino"
+            },
+            {
+                "from": "ext_nuevo_secundaria",
+                "to": "ext_motos",
+                "type": "camino"
+            },
+            {
+                "from": "ext_motos",
+                "to": "ext_carros",
+                "type": "camino"
+            },
+            {
+                "from": "ext_motos",
+                "to": "ext_voleibol",
+                "type": "camino"
+            },
+            {
+                "from": "ext_carros",
+                "to": "ext_entrada_parqueadero",
+                "type": "camino"
+            },
+            {
+                "from": "ext_carros",
+                "to": "ext_bicicletas",
+                "type": "camino"
+            },
+            {
+                "from": "ext_carros",
+                "to": "ext_voleibol",
+                "type": "camino"
+            },
+            {
+                "from": "ext_voleibol",
+                "to": "ext_camino_central",
+                "type": "camino"
+            },
+            {
+                "from": "ext_camino_central",
+                "to": "ext_bicicletas",
+                "type": "camino"
+            },
+            {
+                "from": "ext_camino_central",
+                "to": "ext_entrada_modulares",
+                "type": "camino"
+            },
+            {
+                "from": "ext_camino_central",
+                "to": "ext_pasillo_modulares",
+                "type": "camino"
+            },
+            {
+                "from": "ext_voleibol",
+                "to": "ext_cancha",
+                "type": "camino"
+            },
+            {
+                "from": "ext_cancha",
+                "to": "ext_cancha_2",
+                "type": "camino"
+            },
+            {
+                "from": "ext_cancha_2",
+                "to": "ext_entrada_modulares",
+                "type": "camino"
+            },
+            {
+                "from": "ext_entrada_modulares",
+                "to": "ext_pasillo_modulares",
+                "type": "camino"
+            },
+            {
+                "from": "ext_pasillo_modulares",
+                "to": "ext_cafeteria",
+                "type": "camino"
+            },
+            {
+                "from": "ext_cafeteria",
+                "to": "ext_modulares_secundaria",
+                "type": "camino"
+            }
+        ]
+    },
+    "connections": [
+        {
+            "from": "nuevo_P1_entrada_principal",
+            "to": "ext_nuevo_principal",
+            "type": "puerta"
+        },
+        {
+            "from": "nuevo_P1_entrada_secundaria",
+            "to": "ext_nuevo_secundaria",
+            "type": "puerta"
+        },
+        {
+            "from": "modulares_P1_entrada_cafeteria",
+            "to": "ext_entrada_modulares",
+            "type": "puerta"
+        },
+        {
+            "from": "modulares_P1_entrada_este",
+            "to": "ext_modulares_secundaria",
+            "type": "puerta"
+        }
+    ]
+}

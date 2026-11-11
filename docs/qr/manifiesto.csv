@@ -1,0 +1,91 @@
+﻿id,nombre,edificio,piso,tipo,payload,archivo,generado
+"nuevo_P1_escalera","Escalera Edificio Nuevo Piso 1","Edificio Nuevo",1,"escalera","SONEA:nuevo_P1_escalera","png/nuevo_P1_escalera.png",si
+"nuevo_P1_ascensor","Ascensor Edificio Nuevo Piso 1","Edificio Nuevo",1,"ascensor","SONEA:nuevo_P1_ascensor","png/nuevo_P1_ascensor.png",si
+"nuevo_P1_entrada_principal","Entrada principal Nuevo","Edificio Nuevo",1,"entrada","SONEA:nuevo_P1_entrada_principal","png/nuevo_P1_entrada_principal.png",si
+"nuevo_P1_entrada_secundaria","Entrada secundaria Nuevo","Edificio Nuevo",1,"entrada","SONEA:nuevo_P1_entrada_secundaria","png/nuevo_P1_entrada_secundaria.png",si
+"EN101","EN101","Edificio Nuevo",1,"salon","SONEA:EN101","png/EN101.png",si
+"EN102","EN102","Edificio Nuevo",1,"salon","SONEA:EN102","png/EN102.png",si
+"EN103","EN103","Edificio Nuevo",1,"salon","SONEA:EN103","png/EN103.png",si
+"EN104","EN104","Edificio Nuevo",1,"salon","SONEA:EN104","png/EN104.png",si
+"EN105","EN105","Edificio Nuevo",1,"salon","SONEA:EN105","png/EN105.png",si
+"OFICINA_ETITC","Oficina ETITC","Edificio Nuevo",1,"oficina","SONEA:OFICINA_ETITC","png/OFICINA_ETITC.png",si
+"NUEVO_P1_BANO_M","Baños Mujer","Edificio Nuevo",1,"bano","SONEA:NUEVO_P1_BANO_M","png/NUEVO_P1_BANO_M.png",si
+"NUEVO_P1_BANO_H","Baños Hombre","Edificio Nuevo",1,"bano","SONEA:NUEVO_P1_BANO_H","png/NUEVO_P1_BANO_H.png",si
+"NUEVO_P1_SALIDA_1","Salida de emergencia 1","Edificio Nuevo",1,"salida","SONEA:NUEVO_P1_SALIDA_1","png/NUEVO_P1_SALIDA_1.png",si
+"NUEVO_P1_SALIDA_2","Salida de emergencia 2","Edificio Nuevo",1,"salida","SONEA:NUEVO_P1_SALIDA_2","png/NUEVO_P1_SALIDA_2.png",si
+"nuevo_P2_escalera","Escalera Edificio Nuevo Piso 2","Edificio Nuevo",2,"escalera","SONEA:nuevo_P2_escalera","png/nuevo_P2_escalera.png",si
+"nuevo_P2_ascensor","Ascensor Edificio Nuevo Piso 2","Edificio Nuevo",2,"ascensor","SONEA:nuevo_P2_ascensor","png/nuevo_P2_ascensor.png",si
+"EN201","EN201","Edificio Nuevo",2,"salon","SONEA:EN201","png/EN201.png",si
+"EN202","EN202","Edificio Nuevo",2,"salon","SONEA:EN202","png/EN202.png",si
+"EN203","EN203","Edificio Nuevo",2,"salon","SONEA:EN203","png/EN203.png",si
+"EN204","EN204","Edificio Nuevo",2,"salon","SONEA:EN204","png/EN204.png",si
+"EN205","EN205","Edificio Nuevo",2,"salon","SONEA:EN205","png/EN205.png",si
+"EN206","EN206","Edificio Nuevo",2,"salon","SONEA:EN206","png/EN206.png",si
+"NUEVO_P2_BANO_M","Baños Mujer","Edificio Nuevo",2,"bano","SONEA:NUEVO_P2_BANO_M","png/NUEVO_P2_BANO_M.png",si
+"NUEVO_P2_BANO_H","Baños Hombre","Edificio Nuevo",2,"bano","SONEA:NUEVO_P2_BANO_H","png/NUEVO_P2_BANO_H.png",si
+"NUEVO_P2_SALIDA_1","Salida de emergencia 1","Edificio Nuevo",2,"salida","SONEA:NUEVO_P2_SALIDA_1","png/NUEVO_P2_SALIDA_1.png",si
+"NUEVO_P2_SALIDA_2","Salida de emergencia 2","Edificio Nuevo",2,"salida","SONEA:NUEVO_P2_SALIDA_2","png/NUEVO_P2_SALIDA_2.png",si
+"nuevo_P3_escalera","Escalera Edificio Nuevo Piso 3","Edificio Nuevo",3,"escalera","SONEA:nuevo_P3_escalera","png/nuevo_P3_escalera.png",si
+"nuevo_P3_ascensor","Ascensor Edificio Nuevo Piso 3","Edificio Nuevo",3,"ascensor","SONEA:nuevo_P3_ascensor","png/nuevo_P3_ascensor.png",si
+"EN301","EN301","Edificio Nuevo",3,"salon","SONEA:EN301","png/EN301.png",si
+"EN302","EN302","Edificio Nuevo",3,"salon","SONEA:EN302","png/EN302.png",si
+"EN303","EN303","Edificio Nuevo",3,"salon","SONEA:EN303","png/EN303.png",si
+"BIBLIOTECA","Biblioteca","Edificio Nuevo",3,"biblioteca","SONEA:BIBLIOTECA","png/BIBLIOTECA.png",si
+"NUEVO_P3_BANO_M","Baños Mujer","Edificio Nuevo",3,"bano","SONEA:NUEVO_P3_BANO_M","png/NUEVO_P3_BANO_M.png",si
+"NUEVO_P3_BANO_H","Baños Hombre","Edificio Nuevo",3,"bano","SONEA:NUEVO_P3_BANO_H","png/NUEVO_P3_BANO_H.png",si
+"nuevo_P4_escalera","Escalera Edificio Nuevo Piso 4","Edificio Nuevo",4,"escalera","SONEA:nuevo_P4_escalera","png/nuevo_P4_escalera.png",si
+"nuevo_P4_ascensor","Ascensor Edificio Nuevo Piso 4","Edificio Nuevo",4,"ascensor","SONEA:nuevo_P4_ascensor","png/nuevo_P4_ascensor.png",si
+"OFICINA_UNICOLMAYOR","Oficina Unicolmayor","Edificio Nuevo",4,"oficina","SONEA:OFICINA_UNICOLMAYOR","png/OFICINA_UNICOLMAYOR.png",si
+"SALA_JUNTAS","Sala de Juntas","Edificio Nuevo",4,"oficina","SONEA:SALA_JUNTAS","png/SALA_JUNTAS.png",si
+"SALAS_ESTUDIO","Salas de Estudio","Edificio Nuevo",4,"oficina","SONEA:SALAS_ESTUDIO","png/SALAS_ESTUDIO.png",si
+"NUEVO_P4_BANO_M","Baños Mujer","Edificio Nuevo",4,"bano","SONEA:NUEVO_P4_BANO_M","png/NUEVO_P4_BANO_M.png",si
+"NUEVO_P4_BANO_H","Baños Hombre","Edificio Nuevo",4,"bano","SONEA:NUEVO_P4_BANO_H","png/NUEVO_P4_BANO_H.png",si
+"modulares_P1_escalera","Escalera Edificio Modulares Piso 1","Edificio Modulares",1,"escalera","SONEA:modulares_P1_escalera","png/modulares_P1_escalera.png",si
+"modulares_P1_entrada_cafeteria","Entrada cafetería Modulares","Edificio Modulares",1,"entrada","SONEA:modulares_P1_entrada_cafeteria","png/modulares_P1_entrada_cafeteria.png",si
+"modulares_P1_entrada_este","Entrada noreste Modulares","Edificio Modulares",1,"entrada","SONEA:modulares_P1_entrada_este","png/modulares_P1_entrada_este.png",si
+"M103","M103","Edificio Modulares",1,"salon","SONEA:M103","png/M103.png",si
+"M104","M104","Edificio Modulares",1,"salon","SONEA:M104","png/M104.png",si
+"M105","M105","Edificio Modulares",1,"salon","SONEA:M105","png/M105.png",si
+"M121","M121","Edificio Modulares",1,"salon","SONEA:M121","png/M121.png",si
+"M106","M106","Edificio Modulares",1,"salon","SONEA:M106","png/M106.png",si
+"M107","M107","Edificio Modulares",1,"salon","SONEA:M107","png/M107.png",si
+"M108","M108","Edificio Modulares",1,"salon","SONEA:M108","png/M108.png",si
+"OFICINA_PSICOLOGIA","Oficina de Psicología","Edificio Modulares",1,"oficina","SONEA:OFICINA_PSICOLOGIA","png/OFICINA_PSICOLOGIA.png",si
+"MOD_P1_OF1","Oficina Modulares 1","Edificio Modulares",1,"oficina","SONEA:MOD_P1_OF1","png/MOD_P1_OF1.png",si
+"MOD_P1_OF2","Oficina Modulares 2","Edificio Modulares",1,"oficina","SONEA:MOD_P1_OF2","png/MOD_P1_OF2.png",si
+"MOD_P1_BANO_M","Baños Mujer","Edificio Modulares",1,"bano","SONEA:MOD_P1_BANO_M","png/MOD_P1_BANO_M.png",si
+"MOD_P1_BANO_H","Baños Hombre","Edificio Modulares",1,"bano","SONEA:MOD_P1_BANO_H","png/MOD_P1_BANO_H.png",si
+"MOD_P1_HALL","Hall de Modulares","Edificio Modulares",1,"hall","SONEA:MOD_P1_HALL","png/MOD_P1_HALL.png",si
+"modulares_P2_escalera","Escalera Edificio Modulares Piso 2","Edificio Modulares",2,"escalera","SONEA:modulares_P2_escalera","png/modulares_P2_escalera.png",si
+"M201","M201","Edificio Modulares",2,"salon","SONEA:M201","png/M201.png",si
+"M202","M202","Edificio Modulares",2,"salon","SONEA:M202","png/M202.png",si
+"M203","M203","Edificio Modulares",2,"salon","SONEA:M203","png/M203.png",si
+"M204","M204","Edificio Modulares",2,"salon","SONEA:M204","png/M204.png",si
+"M205","M205","Edificio Modulares",2,"salon","SONEA:M205","png/M205.png",si
+"M206","M206","Edificio Modulares",2,"salon","SONEA:M206","png/M206.png",si
+"M207","M207","Edificio Modulares",2,"salon","SONEA:M207","png/M207.png",si
+"M208","M208","Edificio Modulares",2,"salon","SONEA:M208","png/M208.png",si
+"M215","M215","Edificio Modulares",2,"salon","SONEA:M215","png/M215.png",si
+"M211","M211","Edificio Modulares",2,"salon","SONEA:M211","png/M211.png",si
+"M212","M212","Edificio Modulares",2,"salon","SONEA:M212","png/M212.png",si
+"M213","M213","Edificio Modulares",2,"salon","SONEA:M213","png/M213.png",si
+"M219","M219","Edificio Modulares",2,"salon","SONEA:M219","png/M219.png",si
+"M216","M216","Edificio Modulares",2,"salon","SONEA:M216","png/M216.png",si
+"M217","M217","Edificio Modulares",2,"salon","SONEA:M217","png/M217.png",si
+"M218","M218","Edificio Modulares",2,"salon","SONEA:M218","png/M218.png",si
+"MOD_P2_BANO_M","Baños Mujer","Edificio Modulares",2,"bano","SONEA:MOD_P2_BANO_M","png/MOD_P2_BANO_M.png",si
+"MOD_P2_BANO_H","Baños Hombre","Edificio Modulares",2,"bano","SONEA:MOD_P2_BANO_H","png/MOD_P2_BANO_H.png",si
+"ext_nuevo_principal","Entrada principal Edificio Nuevo","Campus",0,"entrada","SONEA:ext_nuevo_principal","png/ext_nuevo_principal.png",si
+"ext_nuevo_secundaria","Entrada secundaria Edificio Nuevo","Campus",0,"entrada","SONEA:ext_nuevo_secundaria","png/ext_nuevo_secundaria.png",si
+"ext_motos","Parqueadero de motos","Campus",0,"parqueadero","SONEA:ext_motos","png/ext_motos.png",si
+"ext_carros","Parqueadero de carros","Campus",0,"parqueadero","SONEA:ext_carros","png/ext_carros.png",si
+"ext_bicicletas","Parqueadero de bicicletas","Campus",0,"parqueadero","SONEA:ext_bicicletas","png/ext_bicicletas.png",si
+"ext_entrada_parqueadero","Entrada vehicular del parqueadero","Campus",0,"entrada","SONEA:ext_entrada_parqueadero","png/ext_entrada_parqueadero.png",si
+"ext_cancha","Cancha","Campus",0,"cancha","SONEA:ext_cancha","png/ext_cancha.png",si
+"ext_cancha_2","Cancha 2","Campus",0,"cancha","SONEA:ext_cancha_2","png/ext_cancha_2.png",si
+"ext_voleibol","Cancha de voleibol","Campus",0,"cancha","SONEA:ext_voleibol","png/ext_voleibol.png",si
+"ext_entrada_modulares","Entrada Modulares y cafetería","Campus",0,"entrada","SONEA:ext_entrada_modulares","png/ext_entrada_modulares.png",si
+"ext_pasillo_modulares","Pasillo de entrada Modulares","Campus",0,"exterior","SONEA:ext_pasillo_modulares","png/ext_pasillo_modulares.png",si
+"ext_cafeteria","Cafetería","Campus",0,"cafeteria","SONEA:ext_cafeteria","png/ext_cafeteria.png",si
+"ext_modulares_secundaria","Entrada secundaria de Modulares","Campus",0,"entrada","SONEA:ext_modulares_secundaria","png/ext_modulares_secundaria.png",si
+"ext_camino_central","Camino central","Campus",0,"exterior","SONEA:ext_camino_central","png/ext_camino_central.png",si
