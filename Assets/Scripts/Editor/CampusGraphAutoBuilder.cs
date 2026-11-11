@@ -1953,6 +1953,177 @@ public static class CampusGraphAutoBuilder
         }
     }
 
+    // =====================================================================
+    // Prueba del lector de letreros (sin camara)
+    // =====================================================================
+    private class SignCase
+    {
+        public string text;
+        public string expectedId;
+        public string priorId;
+        public bool mustBeFirst;
+    }
+
+    /// <summary>
+    /// Comprueba que el matcher OCR proponga el nodo correcto para textos tipicos
+    /// de letrero. No necesita camara ni telefono.
+    /// </summary>
+    [MenuItem("ETITC Tools/Probar Lectura de Letreros", false, 34)]
+    public static void VerifySignMatcher()
+    {
+        CampusGraphData data = CampusGraphData.Load();
+        if (data == null) throw new Exception("No se pudo cargar CampusGraph.json.");
+
+        List<Node> nodes = new List<Node>();
+        List<GameObject> temporaries = new List<GameObject>();
+
+        try
+        {
+            for (int b = 0; b < data.buildings.Count; b++)
+            {
+                CampusBuilding building = data.buildings[b];
+                if (building == null || building.floors == null) continue;
+
+                for (int f = 0; f < building.floors.Count; f++)
+                {
+                    CampusFloor floor = building.floors[f];
+                    if (floor == null) continue;
+
+                    for (int r = 0; r < floor.rooms.Count; r++)
+                    {
+                        CampusRoom room = floor.rooms[r];
+                        if (room == null) continue;
+                        nodes.Add(CreateSignTestNode(room.id, room.name, building, floor,
+                            room.aliases, temporaries));
+                    }
+
+                    for (int e = 0; e < floor.entrances.Count; e++)
+                    {
+                        CampusEntrance entrance = floor.entrances[e];
+                        if (entrance == null) continue;
+                        nodes.Add(CreateSignTestNode(entrance.id, entrance.name, building, floor,
+                            null, temporaries));
+                    }
+                }
+            }
+
+            for (int i = 0; i < data.exterior.nodes.Count; i++)
+            {
+                CampusExteriorNode exterior = data.exterior.nodes[i];
+                if (exterior == null) continue;
+                nodes.Add(CreateSignTestNode(exterior.id, exterior.name, null, null, null, temporaries));
+            }
+
+            List<SignCase> cases = new List<SignCase>
+            {
+                new SignCase { text = "EN105", expectedId = "EN105", mustBeFirst = true },
+                new SignCase { text = "SALON 105", expectedId = "EN105", mustBeFirst = true },
+                new SignCase { text = "EN 1O5", expectedId = "EN105", mustBeFirst = true },
+                new SignCase { text = "Salon 105", expectedId = "EN105", mustBeFirst = true },
+                new SignCase { text = "M103", expectedId = "M103", mustBeFirst = true },
+                new SignCase { text = "M 1O3", expectedId = "M103", mustBeFirst = true },
+                new SignCase { text = "103", expectedId = "M103", priorId = "M103", mustBeFirst = true },
+                new SignCase { text = "BIBLIOTECA", expectedId = "BIBLIOTECA", mustBeFirst = true },
+                new SignCase { text = "BIBLIO", expectedId = "BIBLIOTECA", mustBeFirst = true },
+                new SignCase { text = "UNICOLMAYOR", expectedId = "OFICINA_UNICOLMAYOR", mustBeFirst = true },
+                new SignCase { text = "PSICOLOGIA", expectedId = "OFICINA_PSICOLOGIA", mustBeFirst = true },
+                new SignCase { text = "SALA DE JUNTAS", expectedId = "SALA_JUNTAS", mustBeFirst = true },
+                new SignCase { text = "SALAS DE ESTUDIO", expectedId = "SALAS_ESTUDIO", mustBeFirst = true },
+                new SignCase { text = "BAÑOS MUJER", expectedId = "NUEVO_P1_BANO_M", priorId = "EN101", mustBeFirst = true },
+                new SignCase { text = "CAFETERIA", expectedId = "ext_cafeteria", mustBeFirst = true },
+                new SignCase { text = "CANCHA", expectedId = "ext_cancha", mustBeFirst = true },
+                new SignCase { text = "PARQUEADERO DE CARROS", expectedId = "ext_carros", mustBeFirst = true }
+            };
+
+            int failures = 0;
+            for (int i = 0; i < cases.Count; i++)
+            {
+                SignCase test = cases[i];
+                Node prior = null;
+                if (!string.IsNullOrEmpty(test.priorId))
+                {
+                    prior = nodes.Find(n => n != null && n.EffectiveId == test.priorId);
+                }
+
+                List<RoomSignMatcher.SignMatch> results =
+                    RoomSignMatcher.Match(test.text, nodes, prior, 3, 0.60f);
+
+                bool found = results.Count > 0 && results[0].node.EffectiveId == test.expectedId;
+                if (!test.mustBeFirst && !found)
+                {
+                    found = results.Exists(m => m.node.EffectiveId == test.expectedId);
+                }
+
+                if (found)
+                {
+                    string top = results.Count > 0 ? results[0].node.EffectiveId : "ninguno";
+                    Debug.Log("[SignMatcher] OK \"" + test.text + "\" -> " + top +
+                              " (" + Mathf.RoundToInt(results[0].score * 100f) + " %)");
+                }
+                else
+                {
+                    failures++;
+                    string top = results.Count > 0 ? results[0].node.EffectiveId : "ninguno";
+                    Debug.LogError("[SignMatcher] FALLO \"" + test.text + "\": esperaba " +
+                                   test.expectedId + " y obtuvo " + top);
+                }
+            }
+
+            // Un texto sin relacion no debe inventar un origen.
+            List<RoomSignMatcher.SignMatch> none = RoomSignMatcher.Match("QQQZZZ", nodes, null, 3, 0.60f);
+            if (none.Count == 0)
+            {
+                Debug.Log("[SignMatcher] OK texto sin relacion -> ningun candidato");
+            }
+            else
+            {
+                failures++;
+                Debug.LogError("[SignMatcher] FALLO: \"QQQZZZ\" devolvio " +
+                               none[0].node.EffectiveId + " (" +
+                               Mathf.RoundToInt(none[0].score * 100f) + " %)");
+            }
+
+            if (failures == 0)
+            {
+                Debug.Log("[SignMatcher] VERIFICACION EXITOSA: " + (cases.Count + 1) +
+                          " casos de letrero correctos.");
+            }
+            else
+            {
+                throw new Exception("El matcher de letreros fallo en " + failures + " casos.");
+            }
+        }
+        finally
+        {
+            for (int i = 0; i < temporaries.Count; i++)
+            {
+                if (temporaries[i] != null) UnityEngine.Object.DestroyImmediate(temporaries[i]);
+            }
+        }
+    }
+
+    private static Node CreateSignTestNode(string id, string name, CampusBuilding building,
+        CampusFloor floor, List<string> aliases, List<GameObject> temporaries)
+    {
+        GameObject nodeGO = new GameObject("TMP_Sign_" + id);
+        temporaries.Add(nodeGO);
+
+        Node node = nodeGO.AddComponent<Node>();
+        node.nodeName = name;
+        node.nodeId = id;
+        node.aliases = aliases != null ? new List<string>(aliases) : new List<string>();
+
+        if (building != null)
+        {
+            node.buildingId = building.id;
+            node.buildingName = building.name;
+            node.buildingShortName = building.shortName;
+        }
+
+        if (floor != null) node.floor = floor.index;
+        return node;
+    }
+
     private static void CheckRoute(CampusGraphManager graph, DijkstraPathfinder pathfinder, List<Node> allNodes,
         string fromId, string toId, bool expectFloorChange, List<string> errores)
     {

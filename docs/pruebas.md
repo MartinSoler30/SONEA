@@ -43,6 +43,19 @@ adb install -r Builds\SONEA.apk
 
 **Evidencia:** captura del panel de lectura con el letrero, captura de la lista de candidatos y captura del origen ya seleccionado.
 
+#### Verificación automática del matcher (sin cámara)
+
+```
+Unity.exe -batchmode -quit -projectPath . ^
+  -executeMethod CampusGraphAutoBuilder.VerifySignMatcher -logFile signmatcher.log
+```
+
+Crea los nodos del JSON en memoria y comprueba 18 casos: `EN105`, `SALON 105`,
+`EN 1O5`, `M103`, `M 1O3`, `BIBLIOTECA`, `BIBLIO`, `UNICOLMAYOR`,
+`PSICOLOGIA`, `SALA DE JUNTAS`, `SALAS DE ESTUDIO`, `BAÑOS MUJER`,
+`CAFETERIA`, `CANCHA`, `PARQUEADERO DE CARROS` y un texto sin relación. El
+resultado esperado en el log es `[SignMatcher] VERIFICACION EXITOSA`.
+
 ## Fase 2 — Un edificio completo
 
 **Objetivo:** validar cambios de piso, escaleras, ascensor y rutas largas.
