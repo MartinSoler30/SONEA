@@ -11,7 +11,7 @@ public class ARPathVisualizer : MonoBehaviour
 
     [Header("Estilo de la Ruta")]
     [Tooltip("Grosor de la línea en metros.")]
-    public float lineWidth = 0.25f;
+    public float lineWidth = 0.15f;
 
     public Color lineColor = new Color(0.10f, 0.90f, 1.00f, 1.00f);
 
@@ -39,6 +39,7 @@ public class ARPathVisualizer : MonoBehaviour
         lineRenderer.endColor = lineColor;
         lineRenderer.numCapVertices = 4;
         lineRenderer.numCornerVertices = 2;
+        ApplyLineColor();
 
         for (int i = 0; i < pathNodes.Count; i++)
         {
@@ -49,6 +50,16 @@ public class ARPathVisualizer : MonoBehaviour
             position.y += groundOffset;
             lineRenderer.SetPosition(i, position);
         }
+    }
+
+    /// <summary>Aplica el color al material (URP Unlit ignora los colores por vértice del LineRenderer).</summary>
+    private void ApplyLineColor()
+    {
+        if (lineRenderer == null || lineRenderer.sharedMaterial == null) return;
+
+        Material material = lineRenderer.sharedMaterial;
+        if (material.HasProperty("_BaseColor")) material.SetColor("_BaseColor", lineColor);
+        if (material.HasProperty("_Color")) material.SetColor("_Color", lineColor);
     }
 
     /// <summary>Borra la ruta dibujada.</summary>

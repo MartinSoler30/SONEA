@@ -136,6 +136,11 @@ Resultado esperado: 175 nodos, 175 alcanzables y rutas de referencia con distanc
 - El APK no se versiona en git; se publica como *Release*.
 - La precisión del anclaje depende del tracking de ARCore y de la luz del entorno.
 
+## Avances
+
+- **2026-11-10 — Geometría real:** se reemplazó el grafo estimado por el medido sobre el KML; 175 nodos, 62 espacios, 4 entradas reales y 14 puntos exteriores. Se documentó la arquitectura, el grafo, las coordenadas y el plan de pruebas, y se generaron 90 QR.
+- **2026-11-10 — Flecha y banner:** decal plano estilo Apple Maps con texturas SDF, banner superior con instrucción e icono de maniobra. Se corrigió la orientación vertical de la flecha y el color de la línea de ruta, y se compiló el APK de prueba.
+
 ## Créditos
 
 Proyecto académico de la **ETITC**. Nombre de producto: **SONEA**. Package: `com.ETITC.SONEA`.

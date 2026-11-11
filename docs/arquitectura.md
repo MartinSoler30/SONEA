@@ -40,7 +40,7 @@ Main.unity
 | Script | Responsabilidad |
 |---|---|
 | `NavigationManager.cs` | Orquesta el inicio/fin de navegación, calcula la ruta, detecta el piso activo, mide el desvío, re-rutea y expone las maniobras del banner. |
-| `ARPathVisualizer.cs` | Dibuja la polilínea con `LineRenderer` (0,25 m de ancho) a 2 cm del piso. |
+| `ARPathVisualizer.cs` | Dibuja la polilínea con `LineRenderer` (0,15 m de ancho) a 2 cm del piso, en cian. |
 | `ARArrowGuide.cs` | Coloca y orienta la flecha decal sobre el tramo actual. |
 | `NavigationBanner.cs` | Actualiza cada 0,2 s el título, la instrucción y el icono de la maniobra. |
 | `ARCampusPlacement.cs` | Ancla el mapa al piso detectado, lo orienta con la brújula (offset 0°) y coloca el origen a los pies del usuario. |

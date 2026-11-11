@@ -58,10 +58,7 @@ public static class NavigationTextureGenerator
     private static void WriteDecal(string fileName, Color fill, float borderPx, float haloPx)
     {
         int size = DecalSize;
-        float scale = size * 0.74f;                        // 0.98 unidades de alto -> ~379 px
-        Vector2 center = new Vector2(size * 0.5f, size * 0.55f);
-
-        Vector2[] poly = ToPixels(ArrowShape, center, scale);
+        Vector2[] poly = ToPixels(ArrowShape, size, haloPx + borderPx + 6f);
         Color[] pixels = new Color[size * size];
 
         float minY = float.MaxValue;
@@ -115,9 +112,7 @@ public static class NavigationTextureGenerator
     private static void WriteIcon(string fileName, Vector2[] shape, float borderPx)
     {
         int size = IconSize;
-        float scale = size * 0.78f;
-        Vector2 center = new Vector2(size * 0.5f, size * 0.5f);
-        Vector2[] poly = ToPixels(shape, center, scale);
+        Vector2[] poly = ToPixels(shape, size, 10f);
 
         Color[] pixels = new Color[size * size];
 
@@ -167,12 +162,33 @@ public static class NavigationTextureGenerator
     // ------------------------------------------------------------------
     // Utilidades
     // ------------------------------------------------------------------
-    private static Vector2[] ToPixels(Vector2[] shape, Vector2 center, float scale)
+    private static Vector2[] ToPixels(Vector2[] shape, int size, float margin)
     {
+        float minX = float.MaxValue, maxX = float.MinValue;
+        float minY = float.MaxValue, maxY = float.MinValue;
+
+        for (int i = 0; i < shape.Length; i++)
+        {
+            minX = Mathf.Min(minX, shape[i].x);
+            maxX = Mathf.Max(maxX, shape[i].x);
+            minY = Mathf.Min(minY, shape[i].y);
+            maxY = Mathf.Max(maxY, shape[i].y);
+        }
+
+        float width = Mathf.Max(0.001f, maxX - minX);
+        float height = Mathf.Max(0.001f, maxY - minY);
+        float usable = Mathf.Max(2f, size - margin * 2f);
+        float scale = usable / Mathf.Max(width, height);
+
+        Vector2 center = new Vector2(size * 0.5f, size * 0.5f);
+        Vector2 shapeCenter = new Vector2((minX + maxX) * 0.5f, (minY + maxY) * 0.5f);
+
         Vector2[] result = new Vector2[shape.Length];
         for (int i = 0; i < shape.Length; i++)
         {
-            result[i] = new Vector2(center.x + shape[i].x * scale, center.y - shape[i].y * scale);
+            result[i] = new Vector2(
+                center.x + (shape[i].x - shapeCenter.x) * scale,
+                center.y + (shape[i].y - shapeCenter.y) * scale);
         }
         return result;
     }
